@@ -2,9 +2,9 @@ import React from "react";
 
 const UrlList = ({ allUrls, copiedId, handleDelete, handleCopy }) => (
   <div className="mt-6 text-left">
-    <h3 className="text-lg font-semibold mb-2 text-slate-800">All URLs:</h3>
+    <h3 className="text-lg font-semibold mb-2 text-slate-500">All URLs:</h3>
     {allUrls.length === 0 ? (
-      <p className="text-gray-500">No URLs yet.</p>
+      <p className="text-gray-700">No URLs yet.</p>
     ) : (
       <ul className="space-y-4">
         {allUrls.map((urlItem) => {
@@ -12,26 +12,26 @@ const UrlList = ({ allUrls, copiedId, handleDelete, handleCopy }) => (
           return (
             <li
               key={urlItem._id}
-              className="border p-3 rounded-md shadow-sm bg-gray-50"
+              className="border p-3 rounded-md shadow-sm bg-gray-400"
             >
               <p>
-                <strong className="text-gray-500">OriginalUrl:</strong>{" "}
+                <strong className="text-gray-950">OriginalUrl:</strong>{" "}
                 <a
                   href={urlItem.originalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 underline font-medium"
+                  className="text-gray-900 underline font-medium"
                 >
                   {urlItem.originalUrl}
                 </a>
               </p>
               <p>
-                <strong className="text-gray-500">ShortedUrl:</strong>{" "}
+                <strong className="text-gray-900">ShortedUrl:</strong>{" "}
                 <a
                   href={shortLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-green-600 underline"
+                  className="text-green-900 underline"
                 >
                   {shortLink}
                 </a>

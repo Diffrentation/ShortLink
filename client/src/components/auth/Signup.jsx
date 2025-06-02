@@ -27,7 +27,9 @@ const Signup = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded-xl shadow-md text-center">
+    <div className="bg-slate-900 min-h-screen flex items-center justify-center">
+    <div className="max-w-md mx-auto  p-6 bg-slate-800 rounded-xl shadow-md text-center">
+      <h1 className="bg-slate-800 text-xl font-semibold">Welcome To ShortLink</h1>
       <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
       <form onSubmit={handleSignup} className="space-y-4">
         <input
@@ -56,7 +58,7 @@ const Signup = () => {
         />
         <button
           type="submit"
-          className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
+          className="w-full bg-blue-800 text-white py-2 rounded hover:bg-blue-700"
         >
           Sign Up
         </button>
@@ -70,6 +72,7 @@ const Signup = () => {
           Login
         </button>
       </p>
+    </div>
     </div>
   );
 };

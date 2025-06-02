@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import UrlForm from "./UrlForm";
 import ShortUrlDisplay from "./ShortUrlDisplay";
-import LogoutButton from "./auth/LogoutButton"
+import LogoutButton from "./auth/LogoutButton";
 import UrlList from "./UrlList";
 
 const UrlShortener = () => {
@@ -15,7 +15,16 @@ const UrlShortener = () => {
 
   const fetchAllUrls = async () => {
     try {
-      const res = await fetch("/api");
+      const token = localStorage.getItem("token");
+       if (!token) {
+        alert("You must be logged in to shorten URLs.");
+       return navigate("/signup");
+    }
+      const res = await fetch("/api", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const data = await res.json();
       if (Array.isArray(data)) {
         setAllUrls(data);
@@ -31,8 +40,12 @@ const UrlShortener = () => {
 
   const handleDelete = async (shortUrl) => {
     try {
+      const token = localStorage.getItem("token");
       await fetch(`/api/${shortUrl}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       setShortUrl("");
       fetchAllUrls();
@@ -76,9 +89,13 @@ const UrlShortener = () => {
     }
 
     try {
+      const token = localStorage.getItem("token");
       const res = await fetch("/api", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ url }),
       });
 
@@ -102,8 +119,9 @@ const UrlShortener = () => {
   }, []);
 
   return (
-    <div className="max-w-xl mx-auto p-6 mt-12 rounded-2xl shadow-lg border text-center bg-white">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">URL Shortener</h2>
+    <div className="bg-gray-900 min-h-screen flex items-center justify-center">
+    <div className="max-w-xl mx-auto p-6 mt-12 rounded-2xl shadow-lg border border-gray-700 text-center bg-gray-900">
+      <h2 className="text-2xl font-bold mb-4 text-gray-500">URL Shortener</h2>
       <div className="flex justify-end mb-4">
         <LogoutButton />
       </div>
@@ -126,6 +144,7 @@ const UrlShortener = () => {
         handleDelete={handleDelete}
         handleCopy={handleCopy}
       />
+    </div>
     </div>
   );
 };

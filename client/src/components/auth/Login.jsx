@@ -18,8 +18,7 @@ const Login = () => {
       // Save token and user data to localStorage
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
-
-      console.log("Login successful:", res.data);
+      console.log("Login successful:", res.data.token);
       navigate("/"); // redirect to homepage
     } catch (err) {
       console.error("Login failed:", err.response?.data?.error || err.message);
@@ -28,8 +27,10 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded-xl shadow-lg text-center">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Login</h2>
+    <div className="bg-slate-900 min-h-screen flex items-center justify-center">
+    <div className="max-w-md mx-auto p-6 bg-slate-800 rounded-xl shadow-lg text-center">
+      <h1 className="bg-slate-800 text-xl font-semibold font-serif">Welcome Back to ShortLink</h1>
+      <h2 className="text-2xl font-bold text-gray-300 mb-4">Login</h2>
       <form onSubmit={handleLogin} className="space-y-4">
         <input
           type="email"
@@ -63,6 +64,7 @@ const Login = () => {
           Sign up
         </button>
       </p>
+    </div>
     </div>
   );
 };

@@ -3,7 +3,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { body, validationResult } from "express-validator";
 
-
 export const validateSignup = [
   body("username").isLength({ min: 3 }).withMessage("Username is required"),
   body("email").isEmail().withMessage("Invalid email"),
@@ -66,7 +65,11 @@ export const signup = async (req, res) => {
     res.status(201).json({
       message: "Signup successful",
       token,
-      user: { id: newUser._id, username: newUser.username, email: newUser.email },
+      user: {
+        id: newUser._id,
+        username: newUser.username,
+        email: newUser.email,
+      },
     });
   } catch (err) {
     console.error("Signup error:", err);

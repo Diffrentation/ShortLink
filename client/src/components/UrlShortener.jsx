@@ -103,7 +103,7 @@ const UrlShortener = () => {
 
       if (!res.ok) throw new Error(data.error || "Failed to shorten URL");
 
-      const generatedUrl = `https://short-link-delta-wheat.vercel.app/api/${data.shortUrl}`;
+      const generatedUrl = `http://localhost:3000/api/${data.shortUrl}`;
       setShortUrl(generatedUrl);
       setUrl("");
       fetchAllUrls();

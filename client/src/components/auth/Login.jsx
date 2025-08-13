@@ -10,7 +10,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/login", {
+      const res = await axios.post("https://short-link-delta-wheat.vercel.app/api/login", {
         email,
         password,
       });

@@ -8,7 +8,7 @@ const UrlList = ({ allUrls, copiedId, handleDelete, handleCopy }) => (
     ) : (
       <ul className="space-y-4">
         {allUrls.map((urlItem) => {
-          const shortLink = `http://localhost:3000/api/${urlItem.shortUrl}`;
+          const shortLink = `https://short-link-delta-wheat.vercel.app/api/${urlItem.shortUrl}`;
           return (
             <li
               key={urlItem._id}

@@ -12,7 +12,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/signup", {
+      await axios.post("https://short-link-delta-wheat.vercel.app/api/signup", {
         username,
         email,
         password,
